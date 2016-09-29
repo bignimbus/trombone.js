@@ -5,11 +5,11 @@ import store from './store/store';
 
 import {render} from 'react-dom';
 
-import TromboneApp from './apps/trombone.app';
+import TromboneContainer from './containers/trombone.container';
 
 render(
   <Provider store={store}>
-    <TromboneApp />
+    <TromboneContainer />
   </Provider>,
   document.querySelector('#app')
 );
