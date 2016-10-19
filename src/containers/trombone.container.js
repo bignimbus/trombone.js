@@ -16,7 +16,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(changePartial(e.target.value));
     },
     changePosition(e) {
-      dispatch(changePosition(e.target.value));
+      console.log(e.touches, e.changedTouches, e.targetTouches);
+      //dispatch(changePosition(e.target.value));
     }
   }
 };
