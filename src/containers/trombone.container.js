@@ -1,23 +1,34 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {changePosition, changePartial} from '../actions/actions';
+import {changePitch, attack, release} from '../actions/actions';
 import Trombone from '../components/trombone.component';
 
 const mapStateToProps = store => {
-  return {
-    position: store.slideReducer.position,
-    partial: store.partialReducer.partial
-  };
+  let {pitch, position, partial} = store.pitchReducer;
+  return {pitch, position, partial};
 };
 
+// TODO bring viewport calc into utility module
 const mapDispatchToProps = dispatch => {
   return {
-    changePartial(e) {
-      dispatch(changePartial(e.target.value));
+    attack () {
+      dispatch(attack());
     },
-    changePosition(e) {
-      console.log(e.touches, e.changedTouches, e.targetTouches);
-      //dispatch(changePosition(e.target.value));
+    release () {
+      dispatch(release());
+    },
+    changeCoords (media, e) {
+      let event = e;
+      let {bottom, left, right, top} = event.target.getBoundingClientRect();
+
+      if (media === 'touch') event = event.touches[0];
+
+      let {clientX, clientY} = event;
+
+      dispatch(changePitch({
+        x: 100 * (clientX - left) / right,
+        y: 100 * (clientY - top) / bottom
+      }));
     }
   }
 };

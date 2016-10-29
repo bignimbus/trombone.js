@@ -19,10 +19,11 @@
     "webpack": "^1.13.2"
   },
   "dependencies": {
+    "lodash": "^4.16.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
-    "soundfont-player": "^0.10.2"
+    "web-audio-daw": "https://github.com/rserota/wad.git#63112ac705b5f68eb253e8d9c4ae8ce9071913e4"
   }
 }

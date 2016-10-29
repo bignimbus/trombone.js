@@ -1,17 +1,14 @@
 <html>
   <head>
     <title>Trombone.js</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
   </head>
   <body>
     <main id="app"></main>
   </body>
-  <script src="node_modules/soundfont-player/dist/soundfont-player.min.js"></script>
   <script src="dist/bundle.js"></script>
-  <script>
-    Soundfont
-      .instrument(new AudioContext(), 'trombone', {format: 'ogg'})
-      .then(function (trombone) {
-        window.play = trombone.play;
-      })
-  </script>
 </html>

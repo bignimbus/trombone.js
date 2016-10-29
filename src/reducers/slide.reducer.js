@@ -1,5 +1,5 @@
 const initialState = {
-  position: 0
+  position: 1
 };
 
 export default function slideReducer (state = initialState, action) {

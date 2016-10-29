@@ -1,8 +1,8 @@
 import {createStore, combineReducers} from 'redux';
-import slideReducer from '../reducers/slide.reducer.js';
-import partialReducer from '../reducers/partial.reducer.js';
+import pitchReducer from '../reducers/pitch.reducer';
+import soundReducer from '../reducers/sound.reducer';
 
-const reducer = combineReducers({slideReducer, partialReducer});
-const store = createStore(reducer);
+const reducer = combineReducers({pitchReducer, soundReducer});
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export default store;

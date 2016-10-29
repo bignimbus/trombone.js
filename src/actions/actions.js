@@ -1,13 +1,21 @@
-export const changePosition = position => {
-  return {
-    type: 'CHANGE_POSITION',
-    position
-  };
-};
+import {getPositionFromXCoord, getPartialFromYCoord} from '../lib/index';
 
-export const changePartial = partial => {
+export function changePitch ({x, y}) {
   return {
-    type: 'CHANGE_PARTIAL',
-    partial
+    type: 'CHANGE_PITCH',
+    position: getPositionFromXCoord(x),
+    partial: getPartialFromYCoord(y)
   };
-};
+}
+
+export function attack () {
+  return {
+    type: 'ATTACK'
+  };
+}
+
+export function release () {
+  return {
+    type: 'RELEASE'
+  };
+}
