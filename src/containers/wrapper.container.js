@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {changePitch, attack, release} from '../actions/actions';
-import Trombone from '../components/trombone.component';
+import Wrapper from '../components/wrapper.component';
 
 const mapStateToProps = store => {
   let {pitch, position, partial} = store.pitchReducer;
@@ -33,6 +33,6 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-const TromboneContainer = connect(mapStateToProps, mapDispatchToProps)(Trombone);
+const WrapperContainer = connect(mapStateToProps, mapDispatchToProps)(Wrapper);
 
-export default TromboneContainer;
+export default WrapperContainer;

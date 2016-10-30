@@ -6,7 +6,7 @@ import store from './store/store';
 
 import {render} from 'react-dom';
 
-import TromboneContainer from './containers/trombone.container';
+import WrapperContainer from './containers/wrapper.container';
 
 import tromboneInstrument from './instruments/trombone.instrument';
 
@@ -17,7 +17,7 @@ store.subscribe(() => {
 
 render(
   <Provider store={store}>
-    <TromboneContainer />
+    <WrapperContainer />
   </Provider>,
   document.querySelector('#app')
 );
