@@ -1,10 +1,9 @@
 import React, {PropTypes} from 'react';
 import {pipe} from 'lodash/fp';
 
-import Trombone from './trombone.component';
+import TromboneContainer from '../containers/trombone.container';
 
 const styles = {
-  background: 'lightsalmon',
   height: '100vh',
   position: 'relative',
   width: '100vw'
@@ -21,7 +20,7 @@ function Wrapper ({changeCoords, attack, release}) {
       onTouchEnd={release}
       style={styles}
     >
-      <Trombone />
+      <TromboneContainer />
     </section>
   );
 }

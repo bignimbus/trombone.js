@@ -2,10 +2,12 @@ import React, {PropTypes} from 'react';
 
 const styles = {
   height: '100%',
-  width: '100%'
+  position: 'relative',
+  width: '100%',
+  zIndex: '-1'
 };
 
-function Trombone () {
+function Trombone ({svgX}) {
   return (
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="" height="" viewBox="0 0 16000 5370" preserveAspectRatio="xMidYMid meet" style={styles}>
     <g id="layer1" fill="#8d7740" stroke="none">
@@ -988,7 +990,9 @@ function Trombone () {
      <path d="M9546 2001 c-4 -5 -2 -12 3 -15 5 -4 12 -2 15 3 4 5 2 12 -3 15 -5 4 -12 2 -15 -3z"/>
      <path d="M9684 1726 c-8 -21 3 -49 16 -41 5 3 10 15 10 25 0 25 -18 36 -26 16z"/>
      </g>
-    <g id="slide" transform="scale(.59) translate(11100, 5050)">
+     <g id="slide" transform={`
+       scale(.59) translate(${svgX.toString()}, 5050)
+     `}>
       <g id="_layer1" fill="#705e32" stroke="none">
        <path d="M14921 1971 c-7 -5 -9 -11 -4 -14 6 -4 19 0 29 8 15 11 16 14 4 15 -8 0 -21 -4 -29 -9z"/>
        <path d="M15060 1961 c13 -11 29 -17 34 -14 11 8 -22 33 -43 33 -11 0 -9 -6 9 -19z"/>
@@ -1949,5 +1953,9 @@ function Trombone () {
     </svg>
   );
 }
+
+Trombone.propTypes = {
+  svgX: PropTypes.number.isRequired
+};
 
 export default Trombone;

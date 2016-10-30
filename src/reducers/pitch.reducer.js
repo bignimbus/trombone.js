@@ -1,9 +1,14 @@
-import {getPitchFromPartialAndPosition, getMidiNoteFromFrequency} from '../lib/index';
+import {
+  getPitchFromPartialAndPosition,
+  getMidiNoteFromFrequency,
+  getSVGCoordsFromPosition
+} from '../lib/index';
 
 const initialState = {
   pitch: 116.54,
   partial: 2,
-  position: 1
+  position: 1,
+  svgX: 11000
 };
 
 export default function pitchReducer (state = initialState, action) {
@@ -12,7 +17,8 @@ export default function pitchReducer (state = initialState, action) {
       let {partial, position} = action;
       let pitch = getPitchFromPartialAndPosition(partial, position);
       let midi = getMidiNoteFromFrequency(pitch);
-      return Object.assign({}, state, {partial, position, pitch, midi});
+      let svgX = getSVGCoordsFromPosition(position);
+      return Object.assign({}, state, {partial, position, pitch, midi, svgX});
     default:
       return state;
   }

@@ -39,3 +39,7 @@ export function getPartialFromYCoord (y) {
 export function getMidiNoteFromFrequency (freq) {
   return 1123.007 + (-1011.611 - 1123.007) / (1 + Math.pow((freq / 204.066), 0.0324439));
 }
+
+export function getSVGCoordsFromPosition (position) {
+  return position * 2000 + 9100;
+}
