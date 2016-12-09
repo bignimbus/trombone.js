@@ -12,7 +12,7 @@ import tromboneInstrument from './instruments/trombone.instrument';
 
 store.subscribe(() => {
   let {pitch} = store.getState().pitchReducer;
-  if (tromboneInstrument.soundSource) tromboneInstrument.setPitch(pitch);
+  tromboneInstrument.setPitch(pitch);
 });
 
 render(

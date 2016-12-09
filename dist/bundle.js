@@ -78,7 +78,7 @@
 	_store2.default.subscribe(function () {
 	  var pitch = _store2.default.getState().pitchReducer.pitch;
 	
-	  if (_trombone2.default.soundSource) _trombone2.default.setPitch(pitch);
+	  _trombone2.default.setPitch(pitch);
 	});
 	
 	(0, _reactDom.render)(_react2.default.createElement(
@@ -11133,7 +11133,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	
 	var _webAudioDaw = __webpack_require__(/*! web-audio-daw */ 58);
@@ -11146,12 +11146,52 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var tromboneInstrument = new _webAudioDaw2.default({
-	  source: 'sawtooth',
-	  pitch: 440,
-	  env: {
-	    hold: 120
-	  }
+	var oscillators = [{
+	    source: 'sawtooth',
+	    volume: 1.0, // Peak volume can range from 0 to an arbitrarily high number, but you probably shouldn't set it higher than 1.
+	    detune: 0,
+	    env: { // This is the ADSR envelope.
+	        attack: 0, // Time in seconds from onset to peak volume.  Common values for oscillators may range from 0.05 to 0.3.
+	        decay: 0.1, // Time in seconds from peak volume to sustain volume.
+	        sustain: 0.8, // Sustain volume level. This is a percent of the peak volume, so sensible values are between 0 and 1.
+	        hold: 120, // Time in seconds to maintain the sustain volume level. If this is not set to a lower value, oscillators must be manually stopped by calling their stop() method.
+	        release: 0.10 // Time in seconds from the end of the hold period to zero volume, or from calling stop() to zero volume.
+	    }
+	}, {
+	    source: 'sawtooth',
+	    volume: 1.0, // Peak volume can range from 0 to an arbitrarily high number, but you probably shouldn't set it higher than 1.
+	    detune: 0,
+	    env: { // This is the ADSR envelope.
+	        attack: 0.05, // Time in seconds from onset to peak volume.  Common values for oscillators may range from 0.05 to 0.3.
+	        decay: 0.1, // Time in seconds from peak volume to sustain volume.
+	        sustain: 0.6, // Sustain volume level. This is a percent of the peak volume, so sensible values are between 0 and 1.
+	        hold: 120, // Time in seconds to maintain the sustain volume level. If this is not set to a lower value, oscillators must be manually stopped by calling their stop() method.
+	        release: 0.10 // Time in seconds from the end of the hold period to zero volume, or from calling stop() to zero volume.
+	    }
+	}].map(function (obj) {
+	    return new _webAudioDaw2.default(obj);
+	});
+	
+	_webAudioDaw2.default.Poly.prototype.setPitch = function (pitch) {
+	    this.wads = this.wads.map(function (wad) {
+	        if (wad.soundSource) wad.setPitch(pitch);
+	        return wad;
+	    });
+	};
+	
+	var tromboneInstrument = new _webAudioDaw2.default.Poly({
+	    pitch: 440, // Set a default pitch on the constuctor if you don't want to set the pitch on play().
+	    detune: 0, // Set a default detune on the constructor if you don't want to set detune on play(). Detune is measured in cents. 100 cents is equal to 1 semitone.
+	    panning: 0, // Horizontal placement of the sound source. Possible values are from 1 to -1.
+	
+	    filter: [{
+	        type: 'lowpass', // What type of filter is applied.
+	        frequency: 1200, // The frequency, in hertz, to which the filter is applied.
+	        q: 0 }, { type: 'highpass', frequency: 520, q: 0 }]
+	});
+	
+	oscillators.forEach(function (oscillator) {
+	    tromboneInstrument.add(oscillator);
 	});
 	
 	exports.default = tromboneInstrument;
