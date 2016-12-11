@@ -25,3 +25,4 @@ Gonna need a math library
 - http://www.olemiss.edu/lowbrass/studio/overtonecharts/tenorandbasstromboneovertone.pdf
 - http://www.sengpielaudio.com/calculator-harmonics.htm
 - http://glassarmonica.com/science/frequency_midi.php
+- http://www.phy.mtu.edu/~suits/NoteFreqCalcs.html

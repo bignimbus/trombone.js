@@ -11182,8 +11182,6 @@
 	var tromboneInstrument = new _webAudioDaw2.default.Poly({
 	    pitch: 440, // Set a default pitch on the constuctor if you don't want to set the pitch on play().
 	    detune: 0, // Set a default detune on the constructor if you don't want to set detune on play(). Detune is measured in cents. 100 cents is equal to 1 semitone.
-	    panning: 0, // Horizontal placement of the sound source. Possible values are from 1 to -1.
-	
 	    filter: [{
 	        type: 'lowpass', // What type of filter is applied.
 	        frequency: 1200, // The frequency, in hertz, to which the filter is applied.
@@ -28846,9 +28844,7 @@
 	    release: function release() {
 	      dispatch((0, _actions.release)());
 	    },
-	    changeCoords: function changeCoords(media, e) {
-	      var event = e;
-	
+	    changeCoords: function changeCoords(media, event) {
 	      var _event$target$getBoun = event.target.getBoundingClientRect(),
 	          bottom = _event$target$getBoun.bottom,
 	          left = _event$target$getBoun.left,

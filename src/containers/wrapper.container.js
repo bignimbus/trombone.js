@@ -17,8 +17,7 @@ const mapDispatchToProps = dispatch => {
     release () {
       dispatch(release());
     },
-    changeCoords (media, e) {
-      let event = e;
+    changeCoords (media, event) {
       let {bottom, left, right, top} = event.target.getBoundingClientRect();
 
       if (media === 'touch') event = event.touches[0];

@@ -37,8 +37,6 @@ Wad.Poly.prototype.setPitch = function (pitch) {
 const tromboneInstrument = new Wad.Poly({
     pitch   : 440,  // Set a default pitch on the constuctor if you don't want to set the pitch on play().
     detune  : 0,     // Set a default detune on the constructor if you don't want to set detune on play(). Detune is measured in cents. 100 cents is equal to 1 semitone.
-    panning : 0,    // Horizontal placement of the sound source. Possible values are from 1 to -1.
-
   filter  : [
     {
         type      : 'lowpass', // What type of filter is applied.
