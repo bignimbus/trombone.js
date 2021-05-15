@@ -12,7 +12,7 @@ I had grand plans for an informative heads-up display showing real-time data on 
 
 This simulation closely approximates the acoustic properties of real trombone tuned to A = 440 (no offense to the Boston Symphony) under ideal conditions. Tuning the partials was simply a matter of finding the exact frequencies reported in the available literature. Simulating the effect of slide movement on pitch was a trickier proposition. The exact pitch and position measurements are well-documented for frequencies on the chromatic scale (e.g. the distance between middle C at third position and B at fourth position is easy to find). The positions, however, are not spaced equally; the more we approach seventh position, the further away each position is from the last. Furthermore, the partials are not always a match for a note on the chromatic scale. The seventh partial is a good example - in first position you will produce a very flat A-flat / G-sharp, it’s not really usable. As a result, every slide position must be adjusted to be shorter than they otherwise would be. This is a long-winded way to express the futility of trying to discern some simple pattern of X partial plus Y position always equals a note on the chromatic scale. So we must think in terms of frequencies instead of notes. X partial plus Y position will always equal Z hertz!
 
-I couldn’t find an equation that establishes a relationship between a slide movement of arbitrary length and the resulting pitch modification, so I plugged the available data on the positions into [this utility](https://www.mycurvefit.com/), which returned this formula:
+I couldn’t find an equation that establishes a relationship between a slide movement of arbitrary length and the resulting pitch modification, so I plugged the [available data](#notes) on the positions into [this utility](https://www.mycurvefit.com/), which returned this formula:
 
 ```
 y = 35.44613 + (0.9992146 - 35.44613)/(1 + (x/498.2127)^0.9692893)
@@ -38,13 +38,8 @@ I can’t vouch for its mathematical soundness but to my ear it’s right on the
 |6|11.272|48.420|80.05|
 |7|12.065|60.485|100.00|
 
-https://www.mycurvefit.com/
-y = 35.44613 + (0.9992146 - 35.44613)/(1 + (x/498.2127)^0.9692893)
-
-Gonna need a math library
-
 ### Sources
-- http://download.springer.com/static/pdf/644/art%253A10.1155%252F2011%252F151436.pdf?originUrl=http%3A%2F%2Fasp.eurasipjournals.springeropen.com%2Farticle%2F10.1155%2F2011%2F151436&token2=exp=1476760226~acl=%2Fstatic%2Fpdf%2F644%2Fart%25253A10.1155%25252F2011%25252F151436.pdf*~hmac=27ae2d1bb2141cbd52c080d3edbc638db39d7a3cd06eccd3669bbea3a6f370bf
+- https://asp-eurasipjournals.springeropen.com/articles/10.1155/2011/151436
 - http://newt.phys.unsw.edu.au/jw/brassacoustics.html
 - https://www.cpp.edu/~dmgrasmick/mu330/Trombonelecture.html
 - http://www.olemiss.edu/lowbrass/studio/overtonecharts/tenorandbasstromboneovertone.pdf
