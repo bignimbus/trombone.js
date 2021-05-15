@@ -1,5 +1,3 @@
-import {pipe} from 'lodash/fp';
-
 export const partialFrequencies = new Map([
   [0, 58.27],
   [1, 116.54],
