@@ -20,6 +20,10 @@ y = 35.44613 + (0.9992146 - 35.44613)/(1 + (x/498.2127)^0.9692893)
 
 I can’t vouch for its mathematical soundness but to my ear it’s right on the money. I am a classically-trained trombonist and former music teacher who spent five years playing professionally so hopefully my ear counts for something.
 
+So with a decent synthesized trombone sound and a model for the effect of partial and slide movement on frequency, I had all the information I needed to build this digital trombone.
+
+The user interface is built with React and Redux.  The trombone image was made using a photograph of a trombone that I ran through a raster-to-vector convertor.  Separating the outer slide and pasting an inner slide was a challenge.  I sliced and manipulated the resulting SVG assets until they were workable (though I would still like to make some improvements).  I suggest looking in the `src` directory and reading the code for a more detailed view of what's going on.
+
 ## Appendix
 
 ### Notes
